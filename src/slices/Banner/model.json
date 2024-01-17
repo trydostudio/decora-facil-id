@@ -29,8 +29,8 @@
           "config": {
             "label": "Imagem mobile",
             "constraint": {
-              "width": 320,
-              "height": 320
+              "width": 400,
+              "height": 300
             },
             "thumbnails": []
           }

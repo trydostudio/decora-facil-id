@@ -1,24 +1,24 @@
-import { Content } from "@prismicio/client";
-import { SliceComponentProps } from "@prismicio/react";
+import { RedesSociaisComp } from '@/components/RedesSociaisComp'
+import { Content } from '@prismicio/client'
+import { SliceComponentProps } from '@prismicio/react'
 
 /**
  * Props for `RedesSociais`.
  */
-export type RedesSociaisProps = SliceComponentProps<Content.RedesSociaisSlice>;
+export type RedesSociaisProps = SliceComponentProps<Content.RedesSociaisSlice>
 
 /**
  * Component for "RedesSociais" Slices.
  */
-const RedesSociais = ({ slice }: RedesSociaisProps): JSX.Element => {
+const RedesSociais = (props: RedesSociaisProps): JSX.Element => {
   return (
     <section
-      data-slice-type={slice.slice_type}
-      data-slice-variation={slice.variation}
+      data-slice-type={props.slice.slice_type}
+      data-slice-variation={props.slice.variation}
     >
-      Placeholder component for redes_sociais (variation: {slice.variation})
-      Slices
+      <RedesSociaisComp {...props} />
     </section>
-  );
-};
+  )
+}
 
-export default RedesSociais;
+export default RedesSociais

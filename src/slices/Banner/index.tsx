@@ -1,23 +1,24 @@
-import { Content } from "@prismicio/client";
-import { SliceComponentProps } from "@prismicio/react";
+import { BannerComp } from '@/components/BannerComp'
+import { Content } from '@prismicio/client'
+import { SliceComponentProps } from '@prismicio/react'
 
 /**
  * Props for `Banner`.
  */
-export type BannerProps = SliceComponentProps<Content.BannerSlice>;
+export type BannerProps = SliceComponentProps<Content.BannerSlice>
 
 /**
  * Component for "Banner" Slices.
  */
-const Banner = ({ slice }: BannerProps): JSX.Element => {
+const Banner = (props: BannerProps): JSX.Element => {
   return (
     <section
-      data-slice-type={slice.slice_type}
-      data-slice-variation={slice.variation}
+      data-slice-type={props.slice.slice_type}
+      data-slice-variation={props.slice.variation}
     >
-      Placeholder component for banner (variation: {slice.variation}) Slices
+      <BannerComp {...props} />
     </section>
-  );
-};
+  )
+}
 
-export default Banner;
+export default Banner

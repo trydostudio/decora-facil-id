@@ -1,25 +1,24 @@
-import { Content } from "@prismicio/client";
-import { SliceComponentProps } from "@prismicio/react";
+import { ListaProdutosComp } from '@/components/ListaProdutosComp'
+import { Content } from '@prismicio/client'
+import { SliceComponentProps } from '@prismicio/react'
 
 /**
  * Props for `ListaProdutos`.
  */
-export type ListaProdutosProps =
-  SliceComponentProps<Content.ListaProdutosSlice>;
+export type ListaProdutosProps = SliceComponentProps<Content.ListaProdutosSlice>
 
 /**
  * Component for "ListaProdutos" Slices.
  */
-const ListaProdutos = ({ slice }: ListaProdutosProps): JSX.Element => {
+const ListaProdutos = (props: ListaProdutosProps): JSX.Element => {
   return (
     <section
-      data-slice-type={slice.slice_type}
-      data-slice-variation={slice.variation}
+      data-slice-type={props.slice.slice_type}
+      data-slice-variation={props.slice.variation}
     >
-      Placeholder component for lista_produtos (variation: {slice.variation})
-      Slices
+      <ListaProdutosComp {...props} />
     </section>
-  );
-};
+  )
+}
 
-export default ListaProdutos;
+export default ListaProdutos
