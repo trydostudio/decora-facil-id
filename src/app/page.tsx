@@ -1,4 +1,5 @@
 import { Header } from '@/components/Header'
+import { Products } from '@/components/Products'
 import { createClient } from '@/prismicio'
 import Banner from '@/slices/Banner'
 import ListaProdutos from '@/slices/ListaProdutos'
@@ -10,6 +11,10 @@ export default async function Home() {
 
   const home = await client.getSingle('home')
 
+  const produtos = await client.getAllByType('products')
+
+  console.log(produtos)
+
   return (
     <main className={Wrapper}>
       <Header {...home} />
@@ -18,12 +23,12 @@ export default async function Home() {
         <SliceZone
           slices={home.data.slices}
           components={{
-            banner: Banner,
-            lista_produtos: ListaProdutos,
-            redes_sociais: RedesSociais
+            banner: Banner
           }}
         />
       </div>
+
+      <Products items={produtos} />
     </main>
   )
 }

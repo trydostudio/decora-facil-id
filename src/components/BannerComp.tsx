@@ -13,6 +13,7 @@ export const BannerComp = (props: BannerProps) => {
   return (
     <div className={Wrapper}>
       <Swiper
+        className="swiperBanner"
         spaceBetween={50}
         slidesPerView={1}
         modules={[Pagination, Autoplay]}
