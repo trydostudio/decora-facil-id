@@ -46,6 +46,38 @@ export const CardBanner = (props: BannerSliceDefaultItem) => {
     setVideo()
   }, [])
 
+  useEffect(() => {
+    if (haveVideo === false) return
+
+    const setHeightVideoCard = () => {
+      const baseHeight = document.querySelector(`.bannerImageBox`)?.clientHeight
+      const videoBoxes = document.querySelectorAll(
+        `.videoBox`
+      ) as NodeListOf<HTMLDivElement>
+
+      videoBoxes.forEach((videoBox, index) => {
+        if (baseHeight) {
+          videoBox.setAttribute('style', `height:${baseHeight}px`)
+        } else {
+          videoBox.setAttribute(
+            'style',
+            `height:${isMobile ? `300px` : `400px`}`
+          )
+        }
+      })
+    }
+
+    setTimeout(() => {
+      setHeightVideoCard()
+    }, 100)
+
+    window.addEventListener('resize', setHeightVideoCard)
+
+    return () => {
+      window.removeEventListener('resize', setHeightVideoCard)
+    }
+  }, [haveVideo])
+
   return (
     <div
       className={Wrapper}
@@ -82,9 +114,12 @@ export const CardBanner = (props: BannerSliceDefaultItem) => {
 }
 
 const Wrapper = `
+  w-full
+  h-full
   flex
   justify-center
   content-center
+  bg-red-500
 `
 const ImageBox = `
   bannerImageBox
@@ -95,6 +130,6 @@ const ImageContent = `
 const VideoBox = `
   videoBox
   w-full
-  h-[300px]
-  md:h-[400px]
+  h-full
+  bg-red-500
 `

@@ -1,14 +1,12 @@
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Pagination } from 'swiper/modules'
+import { PrismicNextImage } from '@prismicio/next'
+import { ProductProps } from './Products'
 
 import 'swiper/css/pagination'
 import 'swiper/css'
-import { ProductsDocument } from '../../prismicio-types'
-import { PrismicNextImage } from '@prismicio/next'
 
-export const SliderPhotos = (props: ProductsDocument) => {
-  const { data } = props
-
+export const SliderPhotos = (props: ProductProps) => {
   return (
     <div className={Wrapper}>
       <Swiper
@@ -20,24 +18,33 @@ export const SliderPhotos = (props: ProductsDocument) => {
         pagination={{ clickable: true }}
         loop={true}
       >
-        {data.photo_1 && (
+        {props.photo_1 && (
           <SwiperSlide>
             <div className={ImageBox}>
-              <PrismicNextImage className={ImageContent} field={data.photo_1} />
+              <PrismicNextImage
+                className={ImageContent}
+                field={props.photo_1}
+              />
             </div>
           </SwiperSlide>
         )}
-        {data.photo_2 && (
+        {props.photo_2 && (
           <SwiperSlide>
             <div className={ImageBox}>
-              <PrismicNextImage className={ImageContent} field={data.photo_2} />
+              <PrismicNextImage
+                className={ImageContent}
+                field={props.photo_2}
+              />
             </div>
           </SwiperSlide>
         )}
-        {data.photo_3 && (
+        {props.photo_3 && (
           <SwiperSlide>
             <div className={ImageBox}>
-              <PrismicNextImage className={ImageContent} field={data.photo_3} />
+              <PrismicNextImage
+                className={ImageContent}
+                field={props.photo_3}
+              />
             </div>
           </SwiperSlide>
         )}
@@ -49,6 +56,7 @@ export const SliderPhotos = (props: ProductsDocument) => {
 const Wrapper = `
   w-full
   h-[200px]
+  group
 `
 const SliderBox = `
   h-full
@@ -62,4 +70,7 @@ const ImageContent = `
   w-full
   h-full
   object-cover
+  group-hover:scale-[1.1]
+  transition
+  duration-500
 `

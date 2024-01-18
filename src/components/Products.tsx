@@ -1,123 +1,220 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { ProductsDocument, ProductsDocumentData } from '../../prismicio-types'
-import InfiniteScroll from 'react-infinite-scroll-component'
+import { ProductsDocument } from '../../prismicio-types'
 import { CardProducts } from './CardProducts'
+import { ImageField, KeyTextField, NumberField } from '@prismicio/client'
+import { IconFilter } from '@/svgs/IconFilter'
+import InfiniteScroll from 'react-infinite-scroll-component'
 
 interface ProductsProps {
   items: ProductsDocument[]
 }
 
+export interface ProductProps {
+  id: string
+  tags: string
+  title: string | undefined
+  titleClean: string | undefined
+  store: KeyTextField
+  phone: KeyTextField
+  price_full: NumberField
+  price_discount: NumberField
+  photo_1: ImageField<never>
+  photo_2: ImageField<never>
+  photo_3: ImageField<never>
+}
+
 export const Products = (props: ProductsProps) => {
-  const [pageSize, setPageSize] = useState(3)
-  const [listFiltered, setListFiltered] = useState(false)
-  const [listLast, setListLast] = useState<null | ProductsDocument[]>(null)
-  const [listProduct, setListProducts] = useState<null | ProductsDocument[]>(
-    null
-  )
+  const [search, setSearch] = useState('')
+  const [pageSize, setPageSize] = useState(6)
+  const [showFilterBar, setShowFilterBar] = useState(false)
 
   useEffect(() => {
-    function paginate(
-      array: ProductsDocument[],
-      page_size: number,
-      page_number: number
-    ) {
-      // human-readable page numbers usually start with 1, so we reduce 1 in the first argument
-      return array.slice((page_number - 1) * page_size, page_number * page_size)
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 600) {
+        setShowFilterBar(true)
+      } else {
+        setShowFilterBar(false)
+      }
+    })
+
+    return () => {
+      window.removeEventListener('scroll', () => {
+        if (window.scrollY > 600) {
+          setShowFilterBar(true)
+        } else {
+          setShowFilterBar(false)
+        }
+      })
     }
-    setListLast(paginate(props.items, 6, 1))
-    setListProducts(paginate(props.items, pageSize, 1))
-  }, [pageSize])
+  }, [])
+
+  function paginate(
+    array: ProductProps[],
+    page_size: number,
+    page_number: number
+  ) {
+    // human-readable page numbers usually start with 1, so we reduce 1 in the first argument
+    return array.slice((page_number - 1) * page_size, page_number * page_size)
+  }
+
+  const searchLower = search
+    .toLocaleLowerCase()
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+
+  const cleanList = props.items.map((item) => {
+    return {
+      id: item.id,
+      tags: item.tags
+        .toString()
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, ''),
+      title: item.data.title,
+      titleClean: item.data.title
+        ?.toLowerCase()
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, ''),
+      store: item.data.store,
+      phone: item.data.phone,
+      price_full: item.data.price_full,
+      price_discount: item.data.price_discount,
+      photo_1: item.data.photo_1,
+      photo_2: item.data.photo_2,
+      photo_3: item.data.photo_3
+    }
+  })
+
+  const filteredList = cleanList.filter(
+    (item) =>
+      item.titleClean?.includes(searchLower) || item.tags.includes(searchLower)
+  )
+
+  // @ts-ignore
+  const pagedFilteredList = paginate(filteredList, pageSize, 1)
 
   return (
     <div className={Wrapper}>
-      <div
-        className={FilterBarBox}
-        onClick={() => setListFiltered(!listFiltered)}
-      >
-        <input
-          className={InputContent}
-          type="text"
-          placeholder="filtrar por produto"
-        />
+      <div className={FilterBox}>
+        <div className={FilterContentBox}>
+          <IconFilter className={FilterIconBox} />
+
+          <input
+            className={FilterInput}
+            type="text"
+            placeholder="Filtrar por produto"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
+        </div>
       </div>
 
-      {!listFiltered && (
-        <div className={ListLastBox}>
-          <ul className={ListBox}>
-            {listLast &&
-              listLast.map((item, index) => (
-                <div className={ItemBox} key={item.data.title}>
-                  <CardProducts {...item} />
-                </div>
-              ))}
-          </ul>
-        </div>
-      )}
+      <div
+        className={`${FilterBarBox} ${showFilterBar ? 'opacity-1' : 'opacity-0'}`}
+      >
+        <div className={FilterBarContentBox}>
+          <IconFilter className={FilterBarIconBox} />
 
-      {listFiltered && (
-        <div className={ListFilteredBox}>
-          {listProduct && (
-            <InfiniteScroll
-              dataLength={listProduct.length - 1}
-              next={() => setPageSize(pageSize + 3)}
-              hasMore={true}
-              loader={``}
-              endMessage={
-                <p style={{ textAlign: 'center' }}>
-                  <b>Yay! You have seen it all</b>
-                </p>
-              }
-            >
-              <ul className={ListBox}>
-                {listProduct.map((item, index) => (
-                  <div className={ItemBox} key={item.data.title}>
-                    <CardProducts {...item} />
-                  </div>
-                ))}
-              </ul>
-            </InfiniteScroll>
-          )}
+          <input
+            className={FilterBarInput}
+            type="text"
+            placeholder="Filtrar por produto"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
         </div>
-      )}
+      </div>
+
+      <InfiniteScroll
+        dataLength={pagedFilteredList.length}
+        next={() => setPageSize(pageSize + 3)}
+        hasMore
+        loader={``}
+      >
+        <ul className={ListBox}>
+          {pagedFilteredList.map((item) => (
+            <li className={ListItemBox} key={item.title}>
+              <CardProducts {...item} />
+            </li>
+          ))}
+        </ul>
+      </InfiniteScroll>
     </div>
   )
 }
 
 const Wrapper = `
-  container
-  py-12
+  max-w-[1392px]
+  pb-12
   px-4
   m-auto
 `
-const FilterBarBox = `
-  mb-10
+const FilterBox = `
+  py-12
   flex
   justify-center
   content-center
 `
-const InputContent = `
+const FilterContentBox = `
+  relative
+`
+const FilterIconBox = `
+  w-6
+  absolute
+  top-3
+  left-3
+`
+const FilterInput = `
   w-[300px]
   h-12
-  px-4
+  pr-12
+  pl-12
   border
   border-black
   rounded-full
   bg-transparent
   text-center
+  placeholder:text-black
 `
-const ListLastBox = ``
-const ListFilteredBox = ``
+const FilterBarBox = `
+  w-full
+  py-4
+  flex
+  justify-center
+  content-center
+  fixed
+  top-0
+  bg-white
+  z-10
+`
+const FilterBarContentBox = `
+  relative
+`
+const FilterBarIconBox = `
+  w-6
+  absolute
+  top-3
+  left-3
+`
+const FilterBarInput = `
+  w-[300px]
+  h-12
+  pr-12
+  pl-12
+  border
+  border-black
+  rounded-full
+  bg-transparent
+  text-center
+  placeholder:text-black
+`
 const ListBox = `
   flex
   flex-col
-  md:grid
-  md:grid-cols-3
+  lg:grid
+  lg:grid-cols-3
   gap-8
 `
-const ItemBox = `
-  w-full
-  flex-1
-  min-w-[0px]
-`
+const ListItemBox = ``

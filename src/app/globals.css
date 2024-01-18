@@ -2,11 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+body.modal-open {
+  overflow: hidden;
+}
+
 [data-slice-zone-todo-component] {
   display: none;
 }
 
-.swiperBanner .swiper-pagination-bullet {
+.bannerSlider .swiper-pagination-bullet {
   width: 30px !important;
   height: 4px !important;
   border-radius: 0 !important;
@@ -14,5 +18,11 @@
 }
 
 .swiperPhotos .swiper-pagination-bullet {
-  background-color: white !important;
+  opacity: 1;
+  border: 1px solid #37ae80;
+  background-color: white;
+}
+
+.swiperPhotos .swiper-pagination-bullet-active {
+  background-color: #37ae80 !important;
 }

@@ -2,8 +2,6 @@ import { Header } from '@/components/Header'
 import { Products } from '@/components/Products'
 import { createClient } from '@/prismicio'
 import Banner from '@/slices/Banner'
-import ListaProdutos from '@/slices/ListaProdutos'
-import RedesSociais from '@/slices/RedesSociais'
 import { SliceZone } from '@prismicio/react'
 
 export default async function Home() {
@@ -12,8 +10,6 @@ export default async function Home() {
   const home = await client.getSingle('home')
 
   const produtos = await client.getAllByType('products')
-
-  console.log(produtos)
 
   return (
     <main className={Wrapper}>
@@ -36,7 +32,7 @@ export default async function Home() {
 const Wrapper = `
   home
   min-h-screen
-  bg-contain
+  bg-[length:800px_auto]
   bg-center
   bg-[url('/images/bg.jpg')]
 `

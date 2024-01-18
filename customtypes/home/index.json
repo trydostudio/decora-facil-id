@@ -42,12 +42,6 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
-            "redes_sociais": {
-              "type": "SharedSlice"
-            },
-            "lista_produtos": {
-              "type": "SharedSlice"
-            },
             "banner": {
               "type": "SharedSlice"
             }
