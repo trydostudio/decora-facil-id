@@ -1,31 +1,9 @@
-import { Metadata } from 'next'
-import * as prismic from '@prismicio/client'
 import { Footer } from '@/components/Footer'
 import { Header } from '@/components/Header'
 import { Products } from '@/components/Products'
 import { createClient } from '@/prismicio'
 import Banner from '@/slices/Banner'
 import { SliceZone } from '@prismicio/react'
-
-export async function generateMetadata(): Promise<Metadata> {
-  const client = createClient()
-  const home = await client.getSingle('home')
-
-  return {
-    // @ts-ignore
-    title: home.data.meta_title,
-    description: home.data.meta_description,
-    openGraph: {
-      title: home.data.meta_title || undefined,
-      type: 'website',
-      images: [
-        {
-          url: home.data.meta_image.url || ''
-        }
-      ]
-    }
-  }
-}
 
 export default async function Home() {
   const client = createClient()
