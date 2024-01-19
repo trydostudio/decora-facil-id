@@ -27,6 +27,7 @@ export interface ProductProps {
 
 export const Products = (props: ProductsProps) => {
   const [search, setSearch] = useState('')
+  const [filterActive, setFilterActive] = useState(false)
   const [pageSize, setPageSize] = useState(6)
   const [showFilterBar, setShowFilterBar] = useState(false)
 
@@ -49,6 +50,10 @@ export const Products = (props: ProductsProps) => {
       })
     }
   }, [])
+
+  useEffect(() => {
+    search.length > 0 ? setFilterActive(true) : setFilterActive(false)
+  }, [search])
 
   function paginate(
     array: ProductProps[],
@@ -127,12 +132,7 @@ export const Products = (props: ProductsProps) => {
         </div>
       </div>
 
-      <InfiniteScroll
-        dataLength={pagedFilteredList.length}
-        next={() => setPageSize(pageSize + 3)}
-        hasMore
-        loader={``}
-      >
+      {!filterActive && (
         <ul className={ListBox}>
           {pagedFilteredList.map((item) => (
             <li className={ListItemBox} key={item.title}>
@@ -140,7 +140,24 @@ export const Products = (props: ProductsProps) => {
             </li>
           ))}
         </ul>
-      </InfiniteScroll>
+      )}
+
+      {filterActive && (
+        <InfiniteScroll
+          dataLength={pagedFilteredList.length}
+          next={() => setPageSize(pageSize + 3)}
+          hasMore
+          loader={``}
+        >
+          <ul className={ListBox}>
+            {pagedFilteredList.map((item) => (
+              <li className={ListItemBox} key={item.title}>
+                <CardProducts {...item} />
+              </li>
+            ))}
+          </ul>
+        </InfiniteScroll>
+      )}
     </div>
   )
 }
