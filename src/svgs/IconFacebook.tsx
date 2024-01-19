@@ -35,9 +35,9 @@ export const IconFacebook = ({ className }: IconProps) => {
         y2="144"
         fill="none"
         stroke="currentColor"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="16"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="16"
       />
     </svg>
   )
