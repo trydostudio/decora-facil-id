@@ -18,7 +18,7 @@ export const SliderPhotos = (props: ProductProps) => {
         pagination={{ clickable: true }}
         loop={true}
       >
-        {props.photo_1 && (
+        {props.photo_1.url && (
           <SwiperSlide>
             <div className={ImageBox}>
               <PrismicNextImage
@@ -28,7 +28,7 @@ export const SliderPhotos = (props: ProductProps) => {
             </div>
           </SwiperSlide>
         )}
-        {props.photo_2 && (
+        {props.photo_2.url && (
           <SwiperSlide>
             <div className={ImageBox}>
               <PrismicNextImage
@@ -38,7 +38,7 @@ export const SliderPhotos = (props: ProductProps) => {
             </div>
           </SwiperSlide>
         )}
-        {props.photo_3 && (
+        {props.photo_3.url && (
           <SwiperSlide>
             <div className={ImageBox}>
               <PrismicNextImage

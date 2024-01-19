@@ -203,6 +203,7 @@ const FilterBarBox = `
   content-center
   fixed
   top-0
+  left-0
   bg-white
   z-10
 `

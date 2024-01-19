@@ -93,6 +93,7 @@ export const CardProducts = (props: ProductProps) => {
                 />
               </div>
             </div>
+
             <div className={ModalThumbs}>
               <div className={ModalThumb}>
                 <div className={ImageBox} onClick={() => setCurrentPhoto(1)}>
@@ -102,22 +103,28 @@ export const CardProducts = (props: ProductProps) => {
                   />
                 </div>
               </div>
-              <div className={ModalThumb}>
-                <div className={ImageBox} onClick={() => setCurrentPhoto(2)}>
-                  <PrismicNextImage
-                    className={ImageContent}
-                    field={props.photo_2}
-                  />
+
+              {props.photo_2.url && (
+                <div className={ModalThumb}>
+                  <div className={ImageBox} onClick={() => setCurrentPhoto(2)}>
+                    <PrismicNextImage
+                      className={ImageContent}
+                      field={props.photo_2}
+                    />
+                  </div>
                 </div>
-              </div>
-              <div className={ModalThumb}>
-                <div className={ImageBox} onClick={() => setCurrentPhoto(3)}>
-                  <PrismicNextImage
-                    className={ImageContent}
-                    field={props.photo_3}
-                  />
+              )}
+
+              {props.photo_3.url && (
+                <div className={ModalThumb}>
+                  <div className={ImageBox} onClick={() => setCurrentPhoto(3)}>
+                    <PrismicNextImage
+                      className={ImageContent}
+                      field={props.photo_3}
+                    />
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
           </div>
 
@@ -242,7 +249,7 @@ const Modal = `
   left-0
   bg-black
   bg-opacity-[0.7]
-  z-10
+  z-20
 `
 const ModalContainer = `
   w-full
