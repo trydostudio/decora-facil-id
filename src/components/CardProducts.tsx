@@ -130,7 +130,7 @@ export const CardProducts = (props: ProductProps) => {
             <p>
               <span className="text-sm text-gray-500">Produto</span>
               <span className="block mb-2 md:mb-4">
-                <strong>Cadeira</strong>
+                <strong>{props.title}</strong>
               </span>
             </p>
 

@@ -1,3 +1,4 @@
+import { Footer } from '@/components/Footer'
 import { Header } from '@/components/Header'
 import { Products } from '@/components/Products'
 import { createClient } from '@/prismicio'
@@ -25,6 +26,8 @@ export default async function Home() {
       </div>
 
       <Products items={produtos} />
+
+      <Footer />
     </main>
   )
 }
