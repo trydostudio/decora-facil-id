@@ -212,6 +212,13 @@
   resolved "https://registry.yarnpkg.com/@next/swc-win32-x64-msvc/-/swc-win32-x64-msvc-14.0.4.tgz#e74892f1a9ccf41d3bf5979ad6d3d77c07b9cba1"
   integrity sha512-yEh2+R8qDlDCjxVpzOTEpBLQTEFAcP2A8fUFLaWNap9GitYKkKv1//y2S6XY6zsR4rCOPRpU7plYDR+az2n30A==
 
+"@next/third-parties@^14.1.0":
+  version "14.1.0"
+  resolved "https://registry.yarnpkg.com/@next/third-parties/-/third-parties-14.1.0.tgz#d9604fff8880e05d3804d2cf7ab42eb5430aec69"
+  integrity sha512-f55SdvQ1WWxi4mb5QqtYQh5wRzbm1XaeP7s39DPn4ks3re+n9VlFccbMxBRHqkE62zAyIKmvkUB2cByT/gugGA==
+  dependencies:
+    third-party-capital "1.0.20"
+
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
   resolved "https://registry.yarnpkg.com/@nodelib/fs.scandir/-/fs.scandir-2.1.5.tgz#7619c2eb21b25483f6d167548b4cfd5a7488c3d5"
@@ -441,14 +448,14 @@
   resolved "https://registry.yarnpkg.com/@sideway/pinpoint/-/pinpoint-2.0.0.tgz#cff8ffadc372ad29fd3f78277aeb29e632cc70df"
   integrity sha512-RNiOoTPkptFtSVzQevY/yWtZwf/RxyVnPy/OcA9HBM3MlGDnBEYL5B41H0MTn0Uec8Hi+2qUtTfG2WWZBmMejQ==
 
-"@slicemachine/adapter-next@^0.3.32":
-  version "0.3.32"
-  resolved "https://registry.yarnpkg.com/@slicemachine/adapter-next/-/adapter-next-0.3.32.tgz#f129b3a72aa106bef5489562080508dbeec90a32"
-  integrity sha512-9UDSeElJJHdPrGhixmX9ZxDsG/Mf1U1jk5iuJIgY60/gp9LPldvuA+0/r6A+LXEwYBBpSpcm7PestTuoua7OKw==
+"@slicemachine/adapter-next@^0.3.34":
+  version "0.3.34"
+  resolved "https://registry.yarnpkg.com/@slicemachine/adapter-next/-/adapter-next-0.3.34.tgz#39ee4b59d25f1e8ccf00bfb2e00bc6750a362682"
+  integrity sha512-tK6GcI8YOvPk0wfFImMlOTzG0cQ3Nc1HyT92Z/bZG5I7quKrzRgLm5tlrYQ1KkolNwN55cGnFToFNExcHe8t7g==
   dependencies:
     "@prismicio/simulator" "^0.1.4"
     "@prismicio/types-internal" "^2.2.0"
-    "@slicemachine/plugin-kit" "0.4.32"
+    "@slicemachine/plugin-kit" "0.4.34"
     common-tags "^1.8.2"
     fp-ts "^2.13.1"
     io-ts "^2.2.20"
@@ -459,17 +466,17 @@
     pascal-case "^3.1.2"
     prismic-ts-codegen "^0.1.17"
 
-"@slicemachine/manager@0.17.6":
-  version "0.17.6"
-  resolved "https://registry.yarnpkg.com/@slicemachine/manager/-/manager-0.17.6.tgz#331a99f3c4dd0174125fa0d1962bb08ecfe924fb"
-  integrity sha512-xsVPR+2htH6V3zLOS3eo22juBvev+cPNG7zstG0JWqd9s1131PbwAk/lejV8eP3eBpSc3fSbVTsVhoLUFXpr1g==
+"@slicemachine/manager@0.17.8":
+  version "0.17.8"
+  resolved "https://registry.yarnpkg.com/@slicemachine/manager/-/manager-0.17.8.tgz#21074957ebbd3fa3385199cbc0c8452af111319c"
+  integrity sha512-/TqxPciCFIRFmzrl/GeZTrrfeW/KfKzooYq26NdIuxeIM7Szpw+Je/Cf4t1YMGnM9Xp1zPLKisGoZQZoJhDRtA==
   dependencies:
     "@antfu/ni" "^0.20.0"
     "@prismicio/custom-types-client" "^1.2.0"
     "@prismicio/mocks" "2.0.0"
     "@prismicio/types-internal" "^2.2.0"
     "@segment/analytics-node" "1.1.3"
-    "@slicemachine/plugin-kit" "0.4.32"
+    "@slicemachine/plugin-kit" "0.4.34"
     "@wooorm/starry-night" "^1.6.0"
     cookie "^0.5.0"
     cors "^2.8.5"
@@ -496,10 +503,10 @@
     semver "^7.3.8"
     unified "^10.1.2"
 
-"@slicemachine/plugin-kit@0.4.32":
-  version "0.4.32"
-  resolved "https://registry.yarnpkg.com/@slicemachine/plugin-kit/-/plugin-kit-0.4.32.tgz#9da91db37f124fb9fdc0949973d641bd705dee47"
-  integrity sha512-zFHVXmAEkWO3OReBEtPpKZ21z8em5LB7DzmpYZuO/vZuVHidj92iaV9uAAYjkHEeed5Ipj40nt+iHnewRRb++g==
+"@slicemachine/plugin-kit@0.4.34":
+  version "0.4.34"
+  resolved "https://registry.yarnpkg.com/@slicemachine/plugin-kit/-/plugin-kit-0.4.34.tgz#16ec980599fca31092f65a904e2153e3a8c71241"
+  integrity sha512-B4Rng2NBZknpVLoKg3ll2gj7/46OtH0yRHZgCPafzID4P0xJJfCCa3y2crEBnFFEVmFmwm1A6k+ErgeROVpPGA==
   dependencies:
     common-tags "^1.8.2"
     defu "^6.1.2"
@@ -4092,14 +4099,14 @@ slash@^3.0.0:
   resolved "https://registry.yarnpkg.com/slash/-/slash-3.0.0.tgz#6539be870c165adbd5240220dbe361f1bc4d4634"
   integrity sha512-g9Q1haeby36OSStwb4ntCGGGaKsaVSjQ68fBxoQcutl5fS1vuY18H3wSt3jFyFtrkx+Kz0V1G85A4MyAdDMi2Q==
 
-slice-machine-ui@^1.22.2:
-  version "1.22.2"
-  resolved "https://registry.yarnpkg.com/slice-machine-ui/-/slice-machine-ui-1.22.2.tgz#23fe0b4a9f1c96ab0f67a43bf4da9636a24a54ea"
-  integrity sha512-1i81gw9FTDbuZ4r0jRN0SM0aJQH5Y9lerfPZbvF6d+TNeEbNs/Gwd/ous3sRHBCFZ/JlnhHdubEmIM3pJYkAkQ==
+slice-machine-ui@^1.23.1:
+  version "1.23.1"
+  resolved "https://registry.yarnpkg.com/slice-machine-ui/-/slice-machine-ui-1.23.1.tgz#b8edd09af3c5f4e7920c62faeaa7246868cc7d8f"
+  integrity sha512-7SXsJYbFtnajdeMosDGN2GM50SufeeuushIpUP7QFTCqSaupHLhhoceJ33vswz/Cnra04Ipz8jBSNPBOGR31VA==
   dependencies:
     "@radix-ui/react-visually-hidden" "1.0.3"
-    "@slicemachine/manager" "0.17.6"
-    start-slicemachine "0.12.12"
+    "@slicemachine/manager" "0.17.8"
+    start-slicemachine "0.12.14"
 
 source-map-js@^1.0.2:
   version "1.0.2"
@@ -4111,14 +4118,14 @@ space-separated-tokens@^2.0.0:
   resolved "https://registry.yarnpkg.com/space-separated-tokens/-/space-separated-tokens-2.0.2.tgz#1ecd9d2350a3844572c3f4a312bceb018348859f"
   integrity sha512-PEGlAwrG8yXGXRjW32fGbg66JAlOAwbObuqVoJpv/mRgoWDQfgH1wDPvtzWyUSNAXBGSk8h755YDbbcEy3SH2Q==
 
-start-slicemachine@0.12.12:
-  version "0.12.12"
-  resolved "https://registry.yarnpkg.com/start-slicemachine/-/start-slicemachine-0.12.12.tgz#1ecdc5b28d8a95cc20ade3fd328f94fd6c562746"
-  integrity sha512-pTctZ/thJOe/LdrIMtwUiRY3uColcVbMZqHavftdyNLZQareyq3uPJibWMpVcmQRPpkgXLYuyQHX0vAGFUAtuw==
+start-slicemachine@0.12.14:
+  version "0.12.14"
+  resolved "https://registry.yarnpkg.com/start-slicemachine/-/start-slicemachine-0.12.14.tgz#1809aa01acf547f9687df3e749d942b161e6760f"
+  integrity sha512-cDmvYxmZudRNSxrMCDhMTUBEluX7Colt8WJ9oKoJD+2+F+Bjj9VR+/eZVvHCw34DBkayiMN199s8rSE7Qg6/iA==
   dependencies:
     "@prismicio/mocks" "^2.0.0-alpha.2"
     "@prismicio/types-internal" "^2.2.0"
-    "@slicemachine/manager" "0.17.6"
+    "@slicemachine/manager" "0.17.8"
     body-parser "^1.20.2"
     chalk "^4.1.2"
     cors "^2.8.5"
@@ -4346,6 +4353,11 @@ thenify-all@^1.0.0:
   integrity sha512-RVZSIV5IG10Hk3enotrhvz0T9em6cyHBLkH/YAZuKqd8hRkKhSfCGIcP2KUY0EPxndzANBmNllzWPwak+bheSw==
   dependencies:
     any-promise "^1.0.0"
+
+third-party-capital@1.0.20:
+  version "1.0.20"
+  resolved "https://registry.yarnpkg.com/third-party-capital/-/third-party-capital-1.0.20.tgz#e218a929a35bf4d2245da9addb8ab978d2f41685"
+  integrity sha512-oB7yIimd8SuGptespDAZnNkzIz+NWaJCu2RMsbs4Wmp9zSDUM8Nhi3s2OOcqYuv3mN4hitXc8DVx+LyUmbUDiA==
 
 throttle-debounce@^2.1.0:
   version "2.3.0"
