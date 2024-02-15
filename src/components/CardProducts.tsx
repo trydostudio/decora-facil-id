@@ -83,6 +83,7 @@ export const CardProducts = (props: ProductProps) => {
               <div className={ImageBox}>
                 <PrismicNextImage
                   className={ImageContent}
+                  fallbackAlt=""
                   field={
                     currentPhoto === 1
                       ? props.photo_1
@@ -100,6 +101,7 @@ export const CardProducts = (props: ProductProps) => {
                   <PrismicNextImage
                     className={ImageContent}
                     field={props.photo_1}
+                    fallbackAlt=""
                   />
                 </div>
               </div>
@@ -110,6 +112,7 @@ export const CardProducts = (props: ProductProps) => {
                     <PrismicNextImage
                       className={ImageContent}
                       field={props.photo_2}
+                      fallbackAlt=""
                     />
                   </div>
                 </div>
@@ -121,6 +124,7 @@ export const CardProducts = (props: ProductProps) => {
                     <PrismicNextImage
                       className={ImageContent}
                       field={props.photo_3}
+                      fallbackAlt=""
                     />
                   </div>
                 </div>

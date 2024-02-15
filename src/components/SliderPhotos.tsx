@@ -24,6 +24,7 @@ export const SliderPhotos = (props: ProductProps) => {
               <PrismicNextImage
                 className={ImageContent}
                 field={props.photo_1}
+                fallbackAlt=""
               />
             </div>
           </SwiperSlide>
@@ -34,6 +35,7 @@ export const SliderPhotos = (props: ProductProps) => {
               <PrismicNextImage
                 className={ImageContent}
                 field={props.photo_2}
+                fallbackAlt=""
               />
             </div>
           </SwiperSlide>
@@ -44,6 +46,7 @@ export const SliderPhotos = (props: ProductProps) => {
               <PrismicNextImage
                 className={ImageContent}
                 field={props.photo_3}
+                fallbackAlt=""
               />
             </div>
           </SwiperSlide>
@@ -65,11 +68,12 @@ const ImageBox = `
   w-full
   h-full
   overflow-hidden
+  bg-white
 `
 const ImageContent = `
   w-full
   h-full
-  object-cover
+  object-contain
   group-hover:scale-[1.1]
   transition
   duration-500

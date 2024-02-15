@@ -95,6 +95,7 @@ export const CardBanner = (props: BannerSliceDefaultItem) => {
                 className={ImageContent}
                 priority
                 field={props.image_mobile}
+                fallbackAlt=""
               />
             </div>
           )}
@@ -104,6 +105,7 @@ export const CardBanner = (props: BannerSliceDefaultItem) => {
                 className={ImageContent}
                 priority
                 field={props.image_desktop}
+                fallbackAlt=""
               />
             </div>
           )}

@@ -14,6 +14,7 @@ export const Header = (props: HeaderProps) => {
                 priority
                 className={LogoImage}
                 field={props.data.logo}
+                fallbackAlt=""
               />
             </PrismicNextLink>
           ) : (
@@ -21,6 +22,7 @@ export const Header = (props: HeaderProps) => {
               priority
               className={LogoImage}
               field={props.data.logo}
+              fallbackAlt=""
             />
           )}
         </header>
