@@ -25,7 +25,7 @@ export default async function Home() {
         />
       </div>
 
-      <Products items={produtos} />
+      <Products whatsapp_text={home.data.whatsapp_text} items={produtos} />
 
       <Footer />
     </main>

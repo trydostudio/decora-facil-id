@@ -2,14 +2,31 @@
 
 import { PrismicNextImage } from '@prismicio/next'
 import { SliderPhotos } from './SliderPhotos'
-import { NumberField } from '@prismicio/client'
+import { KeyTextField, NumberField } from '@prismicio/client'
 import { IconClose } from '@/svgs/IconClose'
 import { useEffect, useState } from 'react'
 import { ProductProps } from './Products'
 
-export const CardProducts = (props: ProductProps) => {
+interface CardProductsProps extends ProductProps {
+  whatsapp_text: KeyTextField
+}
+
+export const CardProducts = (props: CardProductsProps) => {
   const [currentPhoto, setCurrentPhoto] = useState(1)
   const [modalIsOpen, setModalIsOpen] = useState(false)
+  const [message, setMessage] = useState('')
+
+  useEffect(() => {
+    const handleNewMessage = () => {
+      const newMessage = props.whatsapp_text!.replace(
+        '{nome_produto}',
+        props.title!
+      )
+
+      setMessage(newMessage)
+    }
+    handleNewMessage()
+  }, [])
 
   useEffect(() => {
     const body = document.body
@@ -58,7 +75,7 @@ export const CardProducts = (props: ProductProps) => {
           <a
             className={ButtonContent}
             target="blank"
-            href={`https://api.whatsapp.com/send?phone=${props.phone}&text=Ol%C3%A1,%20eu%20tenho%20interesse%20no%20produto%20${props.title},%20encontrei%20no%20site%20Decora%20F%C3%A1cil!`}
+            href={`https://api.whatsapp.com/send?phone=${props.phone}&text=${message}`}
           >
             Quero Comprar
           </a>

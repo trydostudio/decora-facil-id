@@ -47,6 +47,13 @@
             }
           }
         }
+      },
+      "whatsapp_text": {
+        "type": "Text",
+        "config": {
+          "label": "Frase whatsapp",
+          "placeholder": ""
+        }
       }
     },
     "SEO & Metadata": {

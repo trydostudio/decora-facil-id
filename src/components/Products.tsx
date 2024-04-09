@@ -8,6 +8,7 @@ import { IconFilter } from '@/svgs/IconFilter'
 import InfiniteScroll from 'react-infinite-scroll-component'
 
 interface ProductsProps {
+  whatsapp_text: KeyTextField
   items: ProductsDocument[]
 }
 
@@ -136,7 +137,7 @@ export const Products = (props: ProductsProps) => {
         <ul className={ListBox}>
           {pagedFilteredList.map((item) => (
             <li className={ListItemBox} key={item.title}>
-              <CardProducts {...item} />
+              <CardProducts whatsapp_text={props.whatsapp_text} {...item} />
             </li>
           ))}
         </ul>
